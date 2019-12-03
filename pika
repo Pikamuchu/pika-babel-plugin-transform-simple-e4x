@@ -1,0 +1,40 @@
+#!/bin/bash
+
+COMMAND="$1"
+shift
+PARAMS="$@"
+
+if [ "$COMMAND" = "install" ]; then
+  echo "* Installing node_modules..."
+  npm install
+
+elif [ "$COMMAND" = "test" ]; then
+  echo "* Testing..."
+  npm run test
+
+elif [ "$COMMAND" = "coverage" ]; then
+  echo "* Coverage..."
+  npm run coverage
+
+elif [ "$COMMAND" = "format" ]; then
+  echo "* Formating..."
+  npm run prettier
+
+elif [ "$COMMAND" = "publish" ]; then
+  echo "* Publishing..."
+  echo "  For publish login use: npm login [publisher]"
+  npm publish
+
+else
+  echo ""
+  echo "Usage: pika [command]"
+  echo ""
+  echo "where [command] is one of:"
+  echo "   install -> install application dependencies."
+  echo "   build -> compile application."
+  echo "   test -> execute application tests."
+  echo "   format -> auto format project code using prettier."
+  echo "   publish -> publish application package."
+
+  exit 1
+fi

@@ -1,0 +1,5 @@
+{
+    "eslint.enable": true,
+    "eslint.nodePath": "node_modules/eslint",
+    "eslint.autoFixOnSave": true
+}
