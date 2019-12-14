@@ -1,51 +1,60 @@
 /* eslint-env node, mocha */
-import { expect } from 'chai'
+import { expect } from 'chai';
+import { assert } from 'chai';
 
-describe('babel-plugin-transform-e4x', () => {
+describe('babel-plugin-transform-simple-e4x', () => {
   it('should contain text', () => {
-    const xml = <div>test</div>
-    expect(xml.toString()).to.equal('<div>test</div>')
-    expect(xml.div).to.equal('test')
-  })
+    const div = <div>test</div>;
+    expect(div).to.equal('test');
+  });
 
   it('should bind text', () => {
-    const text = 'foo'
-    const xml = <div>{text}</div>
-    expect(xml.div.text).to.equal('foo')
-  })
+    const text = 'foo';
+    const div = <div>{text}</div>;
+    expect(div).to.equal('foo');
+  });
 
   it('should extract attrs', () => {
-    const xml = <div id="hi" dir="ltr"></div>
-    expect(xml.div.attrs.id).to.equal('hi')
-    expect(xml.div.attrs.dir).to.equal('ltr')
-  })
+    const div = <div id="hi" dir="ltr"></div>;
+    expect(div.attribute('id')).to.equal('hi');
+    expect(div.attribute('dir')).to.equal('ltr');
+  });
 
   it('should bind attr', () => {
-    const id = 'foo'
-    const xml = <div id={id}></div>
-    expect(xml.div.attrs.id).to.equal('foo')
-  })
+    const id = 'foo';
+    const div = <div id={id}></div>;
+    expect(div.attribute('id')).to.equal('foo');
+  });
 
-  it('should omit children argument if possible', () => {
-    const xml = <div />
-    expect(xml.div).to.equal(undefined)
-  })
+  it('complex example xml', () => {
+    const fooId = 'foo-id';
+    const barText = 'bar text';
+    const xml = (
+      <xml>
+        <foo id={fooId}>{barText}</foo>
+      </xml>
+    );
+    assert.equal(xml.toString(), '<xml>\n' + '  <foo id="foo-id">bar text</foo>\n' + '</xml>');
+  });
 
-  it('should handle top-level special attrs', () => {
-    const xml =
-      <div
-        class="foo"
-        style="bar"
-        key="key"
-        ref="ref"
-        refInFor
-        slot="slot">
-      </div>
-    expect(xml.div.class).to.equal('foo')
-    expect(xml.div.style).to.equal('bar')
-    expect(xml.div.key).to.equal('key')
-    expect(xml.div.ref).to.equal('ref')
-    expect(xml.div.refInFor).to.be.true
-    expect(xml.div.slot).to.equal('slot')
-  })
-})
+  it('complex example person', () => {
+    const name = 'Bob Smith';
+    const browser = 'Firefox';
+    const person = (
+      <person>
+      <name>{name}</name>
+      <likes>
+        <os>Linux</os>
+        <browser>{browser}</browser>
+        <language>JavaScript</language>
+        <language>Python</language>
+      </likes>
+    </person>
+    );
+    assert.equal(person.name, name);
+    assert.equal(person['name'], name);
+    assert.equal(person.likes.browser, browser);
+    assert.equal(person['likes'].browser, browser);
+    assert.equal(person.likes.language[0], 'JavaScript');
+  });
+});

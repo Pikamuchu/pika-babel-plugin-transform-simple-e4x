@@ -1,9 +1,9 @@
 {
-  "name": "babel-plugin-transform-e4x",
+  "name": "babel-plugin-transform-simple-e4x",
   "version": "1.0.0",
   "description": "Babel plugin for transform obsolete E4X xml processing",
   "main": "./lib/index.js",
-  "unpkg": "dist/babel-plugin-transform-e4x.min.js",
+  "unpkg": "dist/babel-plugin-transform-simple-e4x.min.js",
   "files": [
     "index.js",
     "lib",
@@ -15,11 +15,12 @@
     "prettier": "prettier --write \"./lib/*.js\"",
     "dev": "cd examples && webpack --watch",
     "build": "webpack -d",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "babel-test": "babel test/test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pikamachu/pika-babel-plugin-transform-e4x.git"
+    "url": "git+https://github.com/pikamachu/pika-babel-plugin-transform-simple-e4x.git"
   },
   "keywords": [
     "sfcc",
@@ -29,16 +30,17 @@
   "author": "Antonio Marin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pikamachu/pika-babel-plugin-transform-e4x/issues"
+    "url": "https://github.com/pikamachu/pika-babel-plugin-transform-simple-e4x/issues"
   },
-  "homepage": "https://github.com/pikamachu/pika-babel-plugin-transform-e4x#readme",
+  "homepage": "https://github.com/pikamachu/pika-babel-plugin-transform-simple-e4x#readme",
   "dependencies": {
-    "xml2js": "^0.4.22"
+    "simple4x": "^1.0.1"
   },
   "peerDependencies": {
     "babel-helper-e4x-merge-props": "^2.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.3.4",
     "@babel/core": "^7.3.4",
     "@babel/helper-module-imports": "^7.3.4",
     "@babel/preset-env": "^7.3.4",

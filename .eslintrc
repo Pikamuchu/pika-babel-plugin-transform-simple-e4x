@@ -1,5 +1,5 @@
 {
   "root": true,
-  "extends": ["standard", "prettier"],
+  "extends": ["prettier"],
   "plugins": ["prettier", "mocha"]
 }

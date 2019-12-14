@@ -5,8 +5,8 @@ module.exports = {
   entry: path.join(__dirname, 'lib/index.js'),
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'babel-plugin-transform-e4x.min.js',
-    library: 'babel-plugin-transform-e4x',
+    filename: 'babel-plugin-transform-simple-e4x.min.js',
+    library: 'babel-plugin-transform-simple-e4x',
     libraryTarget: 'umd'
   },
   module: {

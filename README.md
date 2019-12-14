@@ -1,9 +1,9 @@
-# babel-plugin-transform-e4x
+# babel-plugin-transform-simple-e4x
 
-[![Version](https://img.shields.io/npm/v/babel-plugin-transform-e4x.svg)](https://npmjs.org/package/babel-plugin-transform-e4x)
-[![Build Status](https://img.shields.io/travis/pikamachu/babel-plugin-transform-e4x/master.svg)](https://travis-ci.org/pikamachu/babel-plugin-transform-e4x)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7a5d465f487e4f55a8e50e8201cc69b1)](https://www.codacy.com/project/antonio.marin.jimenez/babel-plugin-transform-e4x/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pikamachu/babel-plugin-transform-e4x&amp;utm_campaign=Badge_Grade_Dashboard)
-[![codecov](https://codecov.io/gh/pikamachu/babel-plugin-transform-e4x/branch/master/graph/badge.svg)](https://codecov.io/gh/pikamachu/babel-plugin-transform-e4x)
+[![Version](https://img.shields.io/npm/v/babel-plugin-transform-simple-e4x.svg)](https://npmjs.org/package/babel-plugin-transform-simple-e4x)
+[![Build Status](https://img.shields.io/travis/pikamachu/babel-plugin-transform-simple-e4x/master.svg)](https://travis-ci.org/pikamachu/babel-plugin-transform-simple-e4x)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7a5d465f487e4f55a8e50e8201cc69b1)](https://www.codacy.com/project/antonio.marin.jimenez/babel-plugin-transform-simple-e4x/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pikamachu/babel-plugin-transform-simple-e4x&amp;utm_campaign=Badge_Grade_Dashboard)
+[![codecov](https://codecov.io/gh/pikamachu/babel-plugin-transform-simple-e4x/branch/master/graph/badge.svg)](https://codecov.io/gh/pikamachu/babel-plugin-transform-simple-e4x)
 
 ## Introduction
 
@@ -14,7 +14,7 @@ Babel plugin for obsolete e4x xml processing
 
 ``` bash
 npm install\
-  babel-plugin-transform-e4x\
+  babel-plugin-transform-simple-e4x\
   babel-preset-env\
   --save-dev
 ```
@@ -24,7 +24,7 @@ In your `.babelrc`:
 ``` json
 {
   "presets": ["env"],
-  "plugins": ["transform-e4x"]
+  "plugins": ["transform-simple-e4x"]
 }
 ```
 
@@ -35,7 +35,9 @@ var fooId = 'foo-id';
 var barText = 'bar text';
 var xml =
     <xml>
-        <foo id="{fooId}">{barText}</foo>
+        <foo id={fooId}>
+          {barText}
+        </foo>
     </xml>;
 ```
 
@@ -58,7 +60,6 @@ See tests for more examples and details.
 
 - Babel 7 compatible
 
-
 ## Developing
 
 ### Built with
@@ -78,8 +79,8 @@ See tests for more examples and details.
 Download the code
 
 ```shell
-git clone git@github.com:pikamachu/babel-plugin-transform-e4x.git
-cd babel-plugin-transform-e4x
+git clone git@github.com:pikamachu/pika-babel-plugin-transform-simple-e4x.git
+cd pika-babel-plugin-transform-simple-e4x
 ```
 
 Install dependencies
