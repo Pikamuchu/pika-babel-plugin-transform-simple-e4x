@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-transform-simple-e4x",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Babel plugin for transform obsolete E4X xml processing",
   "main": "./lib/index.js",
   "unpkg": "dist/babel-plugin-transform-simple-e4x.min.js",

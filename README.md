@@ -1,14 +1,13 @@
 # babel-plugin-transform-simple-e4x
 
 [![Version](https://img.shields.io/npm/v/babel-plugin-transform-simple-e4x.svg)](https://npmjs.org/package/babel-plugin-transform-simple-e4x)
-[![Build Status](https://img.shields.io/travis/pikamachu/babel-plugin-transform-simple-e4x/master.svg)](https://travis-ci.org/pikamachu/babel-plugin-transform-simple-e4x)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7a5d465f487e4f55a8e50e8201cc69b1)](https://www.codacy.com/project/antonio.marin.jimenez/babel-plugin-transform-simple-e4x/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pikamachu/babel-plugin-transform-simple-e4x&amp;utm_campaign=Badge_Grade_Dashboard)
-[![codecov](https://codecov.io/gh/pikamachu/babel-plugin-transform-simple-e4x/branch/master/graph/badge.svg)](https://codecov.io/gh/pikamachu/babel-plugin-transform-simple-e4x)
+[![Build Status](https://img.shields.io/travis/pikamachu/pika-babel-plugin-transform-simple-e4x/master.svg)](https://travis-ci.com/pikamachu/pika-babel-plugin-transform-simple-e4x)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7a5d465f487e4f55a8e50e8201cc69b1)](https://www.codacy.com/project/antonio.marin.jimenez/pika-babel-plugin-transform-simple-e4x/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pikamachu/pika-babel-plugin-transform-simple-e4x&amp;utm_campaign=Badge_Grade_Dashboard)
+[![codecov](https://codecov.io/gh/pikamachu/pika-babel-plugin-transform-simple-e4x/branch/master/graph/badge.svg)](https://codecov.io/gh/pikamachu/pika-babel-plugin-transform-simple-e4x)
 
 ## Introduction
 
-Babel plugin for obsolete e4x xml processing
-
+Babel plugin for obsolete e4x xml processing.
 
 ## Usage
 
@@ -44,14 +43,9 @@ var xml =
 To the following JavaScript:
 
 ``` js
-var xml;
-require('xml2js').parseString(
-    '<xml><foo id="foo-id">bar text</foo></xml>',
-    options,
-    function (err, res) {
-        xml = res;
-    }
-);
+var fooId = 'foo-id';
+var barText = 'bar text';
+var xml = new require("simple4x")("<xml><foo id=\"" + fooId + "\">" + barText + "</foo></xml>");
 ```
 
 See tests for more examples and details.
@@ -64,7 +58,7 @@ See tests for more examples and details.
 
 ### Built with
 
-* [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js)
+* [simple4x](https://github.com/pikamachu/pika-simple-e4x)
 
 ### Folder structure
 
