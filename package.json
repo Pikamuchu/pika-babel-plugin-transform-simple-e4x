@@ -13,7 +13,6 @@
     "test": "nyc mocha --require @babel/register",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "prettier": "prettier --write \"./lib/*.js\"",
-    "dev": "cd examples && webpack --watch",
     "build": "webpack -d",
     "prepublishOnly": "npm run build",
     "babel-test": "babel test/test.js"

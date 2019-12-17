@@ -27,7 +27,7 @@ In your `.babelrc`:
 }
 ```
 
-The plugin transpiles the following JSX:
+The plugin transpiles the following E4X:
 
 ``` xml
 var fooId = 'foo-id';
