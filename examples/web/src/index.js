@@ -1,10 +1,17 @@
-var id = 'elementId';
-var text = "Here's some text!!";
-var moreText = "More Text";
+var greeting = "Hello World!!";
+
 var html = (
-  <div>
-    <div id={id}>{text}</div>
-    <span>{moreText}</span>
+  <div class="grid">
+    <header>header</header>
+
+    <article>
+      {greeting}
+    </article>
+
+    <footer>footer</footer>
   </div>
 );
+
+console.log(html);
+
 document.getElementById('app').innerHTML = html;
