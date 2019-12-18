@@ -5,13 +5,13 @@ import { assert } from 'chai';
 describe('babel-plugin-transform-simple-e4x', () => {
   it('should contain text', () => {
     const div = <div>test</div>;
-    expect(div).to.equal('test');
+    expect(div.toString()).to.equal('test');
   });
 
   it('should bind text', () => {
     const text = 'foo';
     const div = <div>{text}</div>;
-    expect(div).to.equal('foo');
+    expect(div.toString()).to.equal('foo');
   });
 
   it('should extract attrs', () => {
@@ -42,19 +42,37 @@ describe('babel-plugin-transform-simple-e4x', () => {
     const browser = 'Firefox';
     const person = (
       <person>
-      <name>{name}</name>
-      <likes>
-        <os>Linux</os>
-        <browser>{browser}</browser>
-        <language>JavaScript</language>
-        <language>Python</language>
-      </likes>
-    </person>
+        <name>{name}</name>
+        <likes>
+          <os>Linux</os>
+          <browser>{browser}</browser>
+          <language>JavaScript</language>
+          <language>Python</language>
+        </likes>
+      </person>
     );
     assert.equal(person.name, name);
     assert.equal(person['name'], name);
     assert.equal(person.likes.browser, browser);
     assert.equal(person['likes'].browser, browser);
     assert.equal(person.likes.language[0], 'JavaScript');
+  });
+
+  it('html example as function return and function parameter', () => {
+    const html = greeting => (
+      <div class="grid">
+        <header>header</header>
+        <article>{greeting}</article>
+        <footer>footer</footer>
+      </div>
+    );
+    assert.equal(
+      html('hello').toString(),
+      <div class="grid">
+        <header>header</header>
+        <article>hello</article>
+        <footer>footer</footer>
+      </div>.toString()
+    );
   });
 });
