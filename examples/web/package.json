@@ -1,10 +1,11 @@
 {
   "name": "babel-plugin-transform-simple-e4x-web-example",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development"
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "build": "webpack --progress --hide-modules --mode production"
   },
   "dependencies": {
-    "simple4x": "^1.0.1"
+    "simple4x": "^1.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.3.4",

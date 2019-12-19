@@ -1,8 +1,12 @@
 {
   "name": "babel-plugin-transform-simple-e4x-node-server-example",
-  "main": "lib/index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node lib/index.js"
+    "build": "babel src -d dist",
+    "start": "nodemon --exec babel-node src/index.js",
+    "test": "mocha --require @babel/register"
+  },
+  "dependencies": {
+    "simple4x": "^1.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -11,6 +15,7 @@
     "@babel/preset-env": "^7.4.2",
     "babel-plugin-transform-simple-e4x": "^1.0.1",
     "nodemon": "^1.17.5",
-    "node-static": "^0.7.11"
+    "node-static": "^0.7.11",
+    "mocha": "^5.2.0"
   }
 }

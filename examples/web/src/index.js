@@ -1,17 +1,3 @@
-var greeting = "Hello World!!";
+import mainPage from './pages/mainPage';
 
-var html = (
-  <div class="grid">
-    <header>header</header>
-
-    <article>
-      {greeting}
-    </article>
-
-    <footer>footer</footer>
-  </div>
-);
-
-console.log(html);
-
-document.getElementById('app').innerHTML = html;
+document.getElementById('app').innerHTML = mainPage("Welcome to simple4x example page");

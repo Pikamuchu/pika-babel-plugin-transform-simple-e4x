@@ -82,11 +82,11 @@ cd pika-babel-plugin-transform-simple-e4x
 Install dependencies
 
 ```shell
-npm install
+bash pika install
 ```
 
 Run application tests.
 
 ```shell
-npm test
+bash pika test
 ```
