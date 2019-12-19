@@ -22,12 +22,12 @@ In your `.babelrc`:
 
 ``` json
 {
-  "presets": ["env"],
-  "plugins": ["transform-simple-e4x"]
+  "presets": ["@babel/preset-env"],
+  "plugins": ["babel-plugin-transform-simple-e4x"]
 }
 ```
 
-The plugin transpiles the following JSX:
+The plugin transpiles the following E4X:
 
 ``` xml
 var fooId = 'foo-id';
@@ -43,9 +43,11 @@ var xml =
 To the following JavaScript:
 
 ``` js
+var XML = new require("simple4x");
+
 var fooId = 'foo-id';
 var barText = 'bar text';
-var xml = new require("simple4x")("<xml><foo id=\"" + fooId + "\">" + barText + "</foo></xml>");
+var xml = new XML("<xml><foo id=\"" + fooId + "\">" + barText + "</foo></xml>");
 ```
 
 See tests for more examples and details.

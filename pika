@@ -7,10 +7,18 @@ PARAMS="$@"
 if [ "$COMMAND" = "install" ]; then
   echo "* Installing node_modules..."
   npm install
+  cd examples/node-server
+  npm install
+  cd ../web
+  npm install
+  cd ../..
 
 elif [ "$COMMAND" = "test" ]; then
   echo "* Testing..."
   npm run test
+  cd examples/node-server
+  npm run test
+  cd ../..
 
 elif [ "$COMMAND" = "coverage" ]; then
   echo "* Coverage..."

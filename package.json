@@ -10,13 +10,11 @@
     "dist"
   ],
   "scripts": {
-    "test": "nyc mocha --require @babel/register",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "prettier": "prettier --write \"./lib/*.js\"",
-    "dev": "cd examples && webpack --watch",
     "build": "webpack -d",
     "prepublishOnly": "npm run build",
-    "babel-test": "babel test/test.js"
+    "prettier": "prettier --write \"./lib/*.js\"",
+    "test": "nyc mocha --require @babel/register"
   },
   "repository": {
     "type": "git",
@@ -34,7 +32,7 @@
   },
   "homepage": "https://github.com/pikamachu/pika-babel-plugin-transform-simple-e4x#readme",
   "dependencies": {
-    "simple4x": "^1.0.1"
+    "simple4x": "^1.1.0"
   },
   "peerDependencies": {
     "babel-helper-e4x-merge-props": "^2.0.0"
