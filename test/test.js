@@ -2,6 +2,7 @@
 import { expect } from 'chai';
 import { assert } from 'chai';
 
+
 describe('babel-plugin-transform-simple-e4x', () => {
   describe('Html processing tests', () => {
     it('should contain text', () => {
@@ -96,5 +97,62 @@ describe('babel-plugin-transform-simple-e4x', () => {
       assert.equal(person['likes'].browser, browser);
       assert.equal(person.likes.language[0], 'JavaScript');
     });
+
+    it('xml manipulation sales example', () => {
+      var sales = <sales vendor="John">
+          <item type="peas" price="4" quantity="6"/>
+          <item type="carrot" price="3" quantity="10"/>
+          <item type="chips" price="5" quantity="3"/>
+        </sales>;
+
+      sales.item.toArray().forEach(
+        item => assert.isNumber(Number(item.attribute('price')))
+      );
+
+//    TODO: Implement appendChild
+//      sales.item += <item type="oranges" price="4"/>;
+//      sales.item = sales.item + <item type="oranges" price="4"/>;
+    });
+  });
+
+  describe('Xml templating tests', () => {
+    it('xml templating sales example', () => {
+      var items = [
+        {
+          t: 'peas',
+          p: 4,
+          q: 6,
+        },
+        {
+          t: 'carrot',
+          p: 4,
+          q: 6,
+        },
+        {
+          t: 'chips',
+          p: 4,
+          q: 6,
+        }
+      ]
+      var sales = <sales vendor="John">
+        {
+          items.map( item =>
+            <item type="{item.t}" price="{item.p}" quantity="{item.q}"/>
+          )
+        }
+        </sales>;
+
+      console.log(sales.toString());
+
+      assert.equal(
+        sales.toString(),
+        '<sales vendor="John">\n' +
+        '  <item type="peas" price="4" quantity="6"/>\n' +
+        '  <item type="carrot" price="4" quantity="6"/>\n' +
+        '  <item type="chips" price="4" quantity="6"/>\n' +
+        '</sales>'
+      );
+    });
   });
 });
+
