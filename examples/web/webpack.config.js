@@ -23,9 +23,10 @@ module.exports = (env = {}, argv) => {
   };
 
   if (isDevelopment) {
+    config.output.path = __dirname + '/public',
     config.plugins = [new webpack.HotModuleReplacementPlugin]
     config.devServer = {
-      contentBase: './dist',
+      contentBase: './public',
       hot: true
     };
   }

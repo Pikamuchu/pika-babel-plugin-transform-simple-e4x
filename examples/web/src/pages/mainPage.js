@@ -1,5 +1,11 @@
-import template from './template'
-import components from './components'
+import template from './template';
+import * as components from './components';
+import * as svg from '../data/svgGraphicData';
 
-export default (data) => template(components.articles(data));
-
+export default message =>
+  template(
+    <div class="container">
+      {components.drawGraphic(svg.data)}
+      {components.sayMessage(message)}
+    </div>
+  );
