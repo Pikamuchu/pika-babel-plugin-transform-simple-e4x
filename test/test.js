@@ -86,11 +86,9 @@ describe('babel-plugin-transform-simple-e4x', () => {
       var sales = <sales vendor="John">
           <item type="peas" price="4" quantity="6"/>
           <item type="carrot" price="3" quantity="10"/>
-          <item type="chips" price="5" quantity="3"/>
         </sales>;
 
-//    TODO: Implement appendChild
-//      sales.item += <item type="chips" price="5" quantity="3"/>;
+      sales.item += <item type="chips" price="5" quantity="3"/>;
       sales.item = sales.item + <item type="oranges" price="4" quantity="4"/>;
 
       sales.item.toArray().forEach(
