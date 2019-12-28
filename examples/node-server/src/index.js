@@ -2,7 +2,7 @@ import http from 'http';
 import nodeStatic from 'node-static';
 import mainPage from './pages/mainPage';
 
-const fileServer = new nodeStatic.Server('./dist');
+const fileServer = new nodeStatic.Server('./public');
 
 const server = http
   .createServer((req, res) => {
