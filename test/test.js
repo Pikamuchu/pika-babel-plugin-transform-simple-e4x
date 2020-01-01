@@ -1,7 +1,5 @@
 /* eslint-env node, mocha */
-import { expect } from 'chai';
 import { assert } from 'chai';
-
 
 describe('babel-plugin-transform-simple-e4x', () => {
   describe('Parsing tests', () => {
@@ -11,7 +9,7 @@ describe('babel-plugin-transform-simple-e4x', () => {
           <div>test</div>
         </html>
       );
-      expect(html.div.toString()).to.equal('test');
+      assert.equal(html.div.toString(), 'test');
     });
 
     it('should bind text', () => {
@@ -21,7 +19,7 @@ describe('babel-plugin-transform-simple-e4x', () => {
           <div>{text}</div>
         </html>
       );
-      expect(html.div.toString()).to.equal('foo');
+      assert.equal(html.div.toString(), 'foo');
     });
 
     it('should extract attrs', () => {
@@ -30,8 +28,8 @@ describe('babel-plugin-transform-simple-e4x', () => {
           <div id="hi" dir="ltr"/>
         </html>
       );
-      expect(html.div.attribute('id')).to.equal('hi');
-      expect(html.div.attribute('dir')).to.equal('ltr');
+      assert.equal(html.div.attribute('id'), 'hi');
+      assert.equal(html.div.attribute('dir'), 'ltr');
     });
 
     it('should bind attr', () => {
@@ -41,28 +39,31 @@ describe('babel-plugin-transform-simple-e4x', () => {
           <div id={id}></div>
         </html>
       );
-      expect(html.div.attribute('id')).to.equal('foo');
+      assert.equal(html.div.attribute('id'), 'foo');
     });
 
-    it('complex example xml', () => {
+    it('should append child', () => {
       const fooId = 'foo-id';
       const barText = 'bar text';
-      const xml = (
+      let xml = (
         <xml>
           <foo id={fooId}>{barText}</foo>
         </xml>
       );
+      xml += <var id="var-id"/>;
       assert.equal(
         xml.toString(),
         '<xml>\n' +
         '  <foo id="foo-id">bar text</foo>\n' +
+        '  <var id="var-id"/>\n' +
         '</xml>');
     });
 
-    it('complex example person', () => {
+    it('should parse person example', () => {
+      let person;
       const name = 'Bob Smith';
       const browser = 'Firefox';
-      const person = (
+      person = (
         <person>
           <name>{name}</name>
           <likes>

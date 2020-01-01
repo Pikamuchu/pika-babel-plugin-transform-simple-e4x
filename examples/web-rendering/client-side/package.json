@@ -1,17 +1,17 @@
 {
-  "name": "babel-plugin-transform-simple-e4x-web-example",
+  "name": "babel-plugin-transform-simple-e4x-client-side-rendering-example",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "build": "webpack --progress --hide-modules --mode production"
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
   },
   "dependencies": {
-    "simple4x": "^1.1.0"
+    "simple4x": "^1.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.3.4",
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
-    "babel-plugin-transform-simple-e4x": "^1.1.0",
+    "babel-plugin-transform-simple-e4x": "^1.2.2",
     "babel-loader": "^8.0.4",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",

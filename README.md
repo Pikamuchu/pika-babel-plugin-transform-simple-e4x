@@ -7,7 +7,7 @@
 
 ## Introduction
 
-Babel plugin for obsolete e4x xml processing.
+Babel plugin for e4x xml processing.
 
 ## Usage
 
@@ -27,17 +27,19 @@ In your `.babelrc`:
 }
 ```
 
-The plugin transpiles the following E4X:
+The plugin transpiles the following E4X code:
 
 ``` xml
-var fooId = 'foo-id';
-var barText = 'bar text';
-var xml =
-    <xml>
-        <foo id={fooId}>
-          {barText}
-        </foo>
-    </xml>;
+const fooId = 'foo-id';
+const barText = 'bar text';
+
+let xml = (
+  <xml>
+    <foo id={fooId}>{barText}</foo>
+  </xml>
+);
+
+xml += <var id="var-id"/>;
 ```
 
 To the following JavaScript:
@@ -47,10 +49,24 @@ var XML = new require("simple4x");
 
 var fooId = 'foo-id';
 var barText = 'bar text';
-var xml = new XML("<xml><foo id=\"" + fooId + "\">" + barText + "</foo></xml>");
+
+var xml = new XML("<xml><foo id=\"" + (fooId) + "\">" + (barText) + "</foo></xml>");
+
+xml.appendChild(new XML("<var id=\"var-id\" />"));
 ```
 
 See tests for more examples and details.
+
+## Examples
+
+### Web Rendering
+
+* [Client side web rendering example using e4x](./examples/web-rendering/client-side/README.md)
+* [Server side web rendering example using e4x](./examples/web-rendering/server-side/README.md)
+
+### Web Service
+
+* [Soap client request example using e4x](./examples/web-service/soap-client/README.md)
 
 ## Requirements
 
