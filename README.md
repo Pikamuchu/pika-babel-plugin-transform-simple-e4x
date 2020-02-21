@@ -45,7 +45,7 @@ xml += <var id="var-id"/>;
 To the following JavaScript:
 
 ``` js
-var XML = new require("simple4x");
+var XML = require("simple4x");
 
 var fooId = 'foo-id';
 var barText = 'bar text';
@@ -58,11 +58,6 @@ xml.appendChild(new XML("<var id=\"var-id\" />"));
 See tests for more examples and details.
 
 ## Examples
-
-### Web Rendering
-
-* [Client side web rendering example using e4x](./examples/web-rendering/client-side/README.md)
-* [Server side web rendering example using e4x](./examples/web-rendering/server-side/README.md)
 
 ### Web Service
 
