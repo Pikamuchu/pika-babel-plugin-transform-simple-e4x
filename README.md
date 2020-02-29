@@ -45,7 +45,7 @@ xml += <var id="var-id"/>;
 To the following JavaScript:
 
 ``` js
-var XML = new require("simple4x");
+var XML = require("simple4x");
 
 var fooId = 'foo-id';
 var barText = 'bar text';
