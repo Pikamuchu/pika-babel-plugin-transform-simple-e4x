@@ -4,42 +4,42 @@ import { assert } from 'chai';
 describe('babel-plugin-transform-simple-e4x', () => {
   describe('Parsing tests', () => {
     it('should contain text', () => {
-      const html = (
-        <html>
-          <div>test</div>
-        </html>
+      const xml = (
+        <xml>
+          <foo>test</foo>
+        </xml>
       );
-      assert.equal(html.div.toString(), 'test');
+      assert.equal(xml.foo.toString(), 'test');
     });
 
     it('should bind text', () => {
       const text = 'foo';
-      const html = (
-        <html>
-          <div>{text}</div>
-        </html>
+      const xml = (
+        <xml>
+          <foo>{text}</foo>
+        </xml>
       );
-      assert.equal(html.div.toString(), 'foo');
+      assert.equal(xml.foo.toString(), 'foo');
     });
 
     it('should extract attrs', () => {
-      const html = (
-        <html>
-          <div id="hi" dir="ltr"/>
-        </html>
+      const xml = (
+        <xml>
+          <foo id="hi" dir="ltr"/>
+        </xml>
       );
-      assert.equal(html.div.attribute('id'), 'hi');
-      assert.equal(html.div.attribute('dir'), 'ltr');
+      assert.equal(xml.foo.attribute('id'), 'hi');
+      assert.equal(xml.foo.attribute('dir'), 'ltr');
     });
 
     it('should bind attr', () => {
       const id = 'foo';
-      const html = (
-        <html>
-          <div id={id}></div>
-        </html>
+      const xml = (
+        <xml>
+          <foo id={id}></foo>
+        </xml>
       );
-      assert.equal(html.div.attribute('id'), 'foo');
+      assert.equal(xml.foo.attribute('id'), 'foo');
     });
 
     it('should append child', () => {
@@ -110,67 +110,67 @@ describe('babel-plugin-transform-simple-e4x', () => {
 
   describe('Templating tests', () => {
     it('function', () => {
-      const body = greeting => (
-        <div class="grid">
-          <header>header</header>
-          <article>{greeting}</article>
-          <footer>footer</footer>
-        </div>
+      const createFooElements = greeting => (
+        <foo class="rid">
+          <zab>zabText</zab>
+          <bar>{greeting}</bar>
+          <rab>rabText</rab>
+        </foo>
       );
 
-      const html = <html>{body('hello')}</html>;
+      const xml = <xml>{createFooElements('barText')}</xml>;
 
       assert.equal(
-        html.toString(),
+        xml.toString(),
         (
-          <html>
-            <div class="grid">
-              <header>header</header>
-              <article>hello</article>
-              <footer>footer</footer>
-            </div>
-          </html>
+          <xml>
+            <foo class="rid">
+              <zab>zabText</zab>
+              <bar>barText</bar>
+              <rab>rabText</rab>
+            </foo>
+          </xml>
         ).toString()
       );
     });
 
     it('inline function', () => {
-      const html = (
-        <html>
+      const xml = (
+        <xml>
           {(function() {
-            var greeting = 'hello';
-            return <div>{greeting}</div>;
+            var zab = 'zabText';
+            return <foo>{zab}</foo>;
           })()}
-        </html>
+        </xml>
       );
 
       assert.equal(
-        html.toString(),
+        xml.toString(),
         (
-          <html>
-              <div>hello</div>
-          </html>
+          <xml>
+              <foo>zabText</foo>
+          </xml>
         ).toString()
       );
     });
 
     it('conditionals', () => {
-      var sayBye = true;
-      var showButton = true;
-      const html = (
-        <html>
-          {sayBye ? <span>Bye</span> : <div>hello</div>}
-          {showButton && <button type="button">Click Me!</button>}
-        </html>
+      var isBar = true;
+      var rabText = 'RAB';
+      const xml = (
+        <xml>
+          {isBar ? <bar>Bye</bar> : <foo>hello</foo>}
+          {rabText && <rab type="rab">{rabText}</rab>}
+        </xml>
       );
 
       assert.equal(
-        html.toString(),
+        xml.toString(),
         (
-          <html>
-            <span>Bye</span>
-            <button type="button">Click Me!</button>
-          </html>
+          <xml>
+            <bar>Bye</bar>
+            <rab type="rab">RAB</rab>
+          </xml>
         ).toString()
       );
     });
